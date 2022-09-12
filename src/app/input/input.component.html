@@ -1,0 +1,15 @@
+<div class="todo__input-box">
+  <div class="todo__complete-all">
+    <img
+      src="assets/icon/complete-all.png"
+      (click)="markAllTasks()"
+    >
+  </div>
+  <input
+    type="text"
+    class="todo__input"
+    placeholder="What needs to be done?"
+    #input
+    (keyup.enter)="addNewTask(input.value)"
+  >
+</div>

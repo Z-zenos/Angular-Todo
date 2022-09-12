@@ -1,0 +1,61 @@
+.todo__stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 50px;
+  border-top: 1px solid #e6e6e6;
+  padding: 10px;
+  font-size: 14px;
+  opacity: 70%;
+  position: relative;
+}
+
+.todo__stats::before,
+.todo__stats::after {
+  content: '';
+  display: block;
+  background: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  height: 6px;
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2), 0 25px 50px 0 rgba(0, 0, 0, 0.1);
+  border: 1px solid #e6e6e6;
+}
+
+.todo__stats::before {
+  bottom: -6px;
+  width: 98%;
+}
+
+.todo__stats::after {
+  bottom: -12px;
+  width: 96%;
+}
+
+.todo__progress {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-basis: 40%;
+}
+
+.todo__progress--all,
+.todo__progress--active,
+.todo__progress--completed {
+  border: 1px solid #ccc;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  text-decoration: none;
+  color: #000;
+}
+
+.todo__clear {
+  transition: all .4s ease;
+}
+
+.todo__clear:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}

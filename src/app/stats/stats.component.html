@@ -1,0 +1,15 @@
+<div class="todo__stats">
+  <div class="todo__number-items">
+    {{ numberTasks }} items left
+  </div>
+
+  <div class="todo__progress">
+    <a class="todo__progress--all" [routerLink]="['', 'all']">All</a>
+    <a class="todo__progress--active" [routerLink]="['', 'active']">Active</a>
+    <a class="todo__progress--completed" [routerLink]="['', 'completed']">Completed</a>
+  </div>
+
+  <div class="todo__clear" (click)="clearTasks()">
+    Clear completed
+  </div>
+</div>
