@@ -1,11 +1,11 @@
 <div
   class="todo"
   [ngClass]="isCompleted ? 'completed' : ''"
-  (change)="isCompleted = !isCompleted"
+  (change)="markTask()"
 >
   <div class="todo__complete">
     <div class="round">
-      <input type="checkbox" id="{{taskContent + id}}" />
+      <input type="checkbox" id="{{taskContent + id}}"/>
       <label for="{{taskContent + id}}"></label>
     </div>
   </div>

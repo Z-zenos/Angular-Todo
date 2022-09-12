@@ -17,9 +17,10 @@ import {ActivatedRoute} from "@angular/router";
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, AfterViewInit, AfterContentChecked {
-  @ViewChildren(TodoComponent) taskList!: QueryList<TodoComponent>;
+  // @ViewChildren(TodoComponent) taskList!: QueryList<TodoComponent>;
   title = 'Todo';
-  tasks!: string[];
+  tasks: Todo[] = [];
+  status = 'all';
 
   constructor(
     private _cdref: ChangeDetectorRef,
@@ -28,12 +29,7 @@ export class AppComponent implements OnInit, AfterViewInit, AfterContentChecked 
 
   ngOnInit(): void {
     this._activatedRoute.paramMap.subscribe(params => {
-      console.log(params);
-      this.tasks = {
-        'all': this.tasks,
-        'active': this.taskActives,
-        'completed': this.taskCompleteds
-      }[params.get('status') as string] as string[] || [];
+      this.status = params.get('status') as string || 'all';
     });
   }
 
@@ -42,26 +38,35 @@ export class AppComponent implements OnInit, AfterViewInit, AfterContentChecked 
   }
 
   getTask(newTask: string): void {
-    this.tasks.push(newTask.trim());
-    console.log(this.tasks);
+    this.tasks.push(new Todo(newTask.trim()));
   };
 
   get taskCompleteds() {
-    return this.taskList?.filter(task => task.isCompleted);
+    return this.tasks.filter(t => t.isCompleted);
   }
 
   get taskActives() {
-    return this.taskList?.filter(task => !task.isCompleted);
+    return this.tasks.filter(t => !t.isCompleted);
+  }
+
+  // get tasksByStatus() {
+  //   return {
+  //     'all': this.tasks,
+  //     'active': this.taskActives,
+  //     'completed': this.taskCompleteds
+  //   }[this.status] as string[] || [];
+  // }
+
+  tickTask(task: any) {
+    this.tasks[task.id].isCompleted = task.isCompleted;
   }
 
   markAllCompleted(isAllCompleted: boolean): void {
-    this.taskList.forEach(todoCom => todoCom.isCompleted = isAllCompleted);
+    // this.taskList.forEach(todoCom => todoCom.isCompleted = isAllCompleted);
   }
 
   clearTasksCompleted(): void {
-    for(let i = this.taskList.length - 1; i >= 0; i--)
-      if(this.taskList.get(i)?.isCompleted)
-        this.tasks.splice(i, 1);
+    this.tasks = this.tasks.filter(t => !t.isCompleted);
   }
 
   deleteTask(id: number) {

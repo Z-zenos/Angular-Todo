@@ -8,15 +8,13 @@ import { TodoComponent } from './todo/todo.component';
 import { StatsComponent } from './stats/stats.component';
 import {FormsModule} from "@angular/forms";
 
-import { ErrorComponent } from './error/error.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InputComponent,
     TodoComponent,
-    StatsComponent,
-    ErrorComponent
+    StatsComponent
   ],
   imports: [
     BrowserModule,

@@ -9,6 +9,7 @@ export class TodoComponent implements OnInit {
   @Input() taskContent!: string;
   @Input() id!: number;
   @Output() removeTaskEvent = new EventEmitter();
+  @Output() markTaskEvent = new EventEmitter();
 
   isCompleted = false;
 
@@ -19,6 +20,11 @@ export class TodoComponent implements OnInit {
 
   removeTask() {
     this.removeTaskEvent.emit(this.id);
+  }
+
+  markTask() {
+    this.isCompleted = !this.isCompleted;
+    this.markTaskEvent.emit({ isCompleted: this.isCompleted, id: this.id});
   }
 
 }
