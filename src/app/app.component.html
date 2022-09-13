@@ -11,7 +11,7 @@
 
   <todo-stats
     [numberTasks]="taskActives.length"
-    [hasCompletedTask]="tasks.length > taskActives.length ? true : false"
+    [hasCompletedTask]="tasks.length > taskActives.length"
     *ngIf="tasks.length"
     (clearEvent)="clearTasksCompleted()"
   >
