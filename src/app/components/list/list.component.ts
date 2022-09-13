@@ -1,10 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {TodoService} from "../../service/todo.service";
 import {Todo} from "../../Todo";
 import {ActivatedRoute} from "@angular/router";
 
 @Component({
-  selector: 'app-list',
+  selector: 'list',
   templateUrl: './list.component.html',
   styleUrls: ['./list.component.css']
 })
@@ -25,11 +25,15 @@ export class ListComponent implements OnInit {
   }
 
   markTask(task: Todo) {
-    this.tasks[task.id].isCompleted = task.isCompleted;
+    (this.tasks.find(t => t.id === task.id) as Todo).isCompleted = task.isCompleted;
   }
 
   deleteTask(id: number) {
-    this.tasks.splice(id, 1);
+    for(let i = 0; i < this.tasks.length; i++)
+      if(this.tasks[i].id === id) {
+        this.tasks.splice(i, 1);
+        break;
+      }
   }
 
   get taskCompleteds() {
@@ -41,13 +45,11 @@ export class ListComponent implements OnInit {
   }
 
   get tasksByStatus() {
-    const tmp = {
+    return {
       'all': this.tasks,
       'active': this.taskActives,
       'completed': this.taskCompleteds
     }[this.status] as Todo[];
-    console.log(this.tasks, tmp, this.status);
-    return tmp;
   }
 
 }
