@@ -37,7 +37,7 @@
   top: 50%;
   transform: translate(-50%, -50%);
   width: 28px;
-  transition: all .4s ease;
+  transition: all .2s ease;
 }
 
 .round label:after {
@@ -52,11 +52,21 @@
   top: 8px;
   transform: rotate(-45deg);
   width: 12px;
-  transition: all .4s ease;
+  transition: all .2s ease;
 }
 
 .round input[type="checkbox"] {
   visibility: hidden;
+}
+
+
+.completed .round label {
+  background-color: #fff;
+  border: 1px solid #6ccfad;
+}
+
+.completed .round label:after {
+  opacity: 1;
 }
 
 .completed .round input[type="checkbox"]:checked + label {
