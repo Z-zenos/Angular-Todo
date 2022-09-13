@@ -25,7 +25,7 @@ export class AppComponent implements DoCheck {
     this._cdref.detectChanges();
     this.shareTaskList();
     if(this.taskActives.length)
-      this.isAllCompleted = this.taskActives.length ? false : true;
+      this.isAllCompleted = !this.taskActives.length;
   }
 
   shareTaskList() {
