@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Todo} from "../../Todo";
 
 @Component({
   selector: 'todo',
@@ -6,12 +7,9 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./todo.component.css']
 })
 export class TodoComponent implements OnInit {
-  @Input() taskContent!: string;
-  @Input() id!: number;
+  @Input() task!: Todo;
   @Output() removeTaskEvent = new EventEmitter();
-  @Output() markTaskEvent = new EventEmitter();
-
-  isCompleted = false;
+  @Output() changeStatusEvent = new EventEmitter();
 
   constructor() { }
 
@@ -19,12 +17,12 @@ export class TodoComponent implements OnInit {
   }
 
   removeTask() {
-    this.removeTaskEvent.emit(this.id);
+    this.removeTaskEvent.emit(this.task.id);
   }
 
-  markTask() {
-    this.isCompleted = !this.isCompleted;
-    this.markTaskEvent.emit({ isCompleted: this.isCompleted, id: this.id});
+  changeStatusTask() {
+    this.task.isCompleted = !this.task.isCompleted;
+    this.changeStatusEvent.emit(this.task);
   }
 
 }

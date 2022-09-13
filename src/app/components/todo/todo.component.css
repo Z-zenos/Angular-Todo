@@ -28,7 +28,7 @@
 
 .round label {
   background-color: #fff;
-  border: 1px solid #ccc;
+  border: 1px solid #e6e6e6;
   border-radius: 50%;
   cursor: pointer;
   height: 28px;
@@ -37,10 +37,11 @@
   top: 50%;
   transform: translate(-50%, -50%);
   width: 28px;
+  transition: all .4s ease;
 }
 
 .round label:after {
-  border: 2px solid #fff;
+  border: 2px solid #6ccfad;
   border-top: none;
   border-right: none;
   content: "";
@@ -51,6 +52,7 @@
   top: 8px;
   transform: rotate(-45deg);
   width: 12px;
+  transition: all .4s ease;
 }
 
 .round input[type="checkbox"] {
@@ -58,8 +60,8 @@
 }
 
 .completed .round input[type="checkbox"]:checked + label {
-  background-color: #66bb6a;
-  border-color: #66bb6a;
+  background-color: #fff;
+  border: 1px solid #6ccfad;
 }
 
 .completed .round input[type="checkbox"]:checked + label:after {

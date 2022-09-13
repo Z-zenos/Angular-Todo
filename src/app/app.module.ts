@@ -3,10 +3,11 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { InputComponent } from './input/input.component';
-import { TodoComponent } from './todo/todo.component';
-import { StatsComponent } from './stats/stats.component';
+import { InputComponent } from './components/input/input.component';
+import { TodoComponent } from './components/todo/todo.component';
+import { StatsComponent } from './components/stats/stats.component';
 import {FormsModule} from "@angular/forms";
+import { ListComponent } from './components/list/list.component';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import {FormsModule} from "@angular/forms";
     AppComponent,
     InputComponent,
     TodoComponent,
-    StatsComponent
+    StatsComponent,
+    ListComponent
   ],
   imports: [
     BrowserModule,

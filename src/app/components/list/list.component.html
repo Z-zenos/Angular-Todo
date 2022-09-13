@@ -1,0 +1,12 @@
+
+<div
+  class="todo__list"
+  *ngFor="let task of tasksByStatus"
+>
+  <todo
+    [task]="task"
+    (removeTaskEvent)="deleteTask($event)"
+    (changeStatusEvent)="markTask($event)"
+  >
+  </todo>
+</div>

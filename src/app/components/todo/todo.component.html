@@ -1,0 +1,20 @@
+<div
+  class="todo"
+  [ngClass]="task.isCompleted ? 'completed' : ''"
+  (change)="changeStatusTask()"
+>
+  <div class="todo__complete">
+    <div class="round">
+      <input type="checkbox" id="{{task.id}}"/>
+      <label for="{{task.id}}"></label>
+    </div>
+  </div>
+
+  <div class="todo__title">
+    <p>{{ task.title }}</p>
+  </div>
+
+  <div class="todo__delete">
+    <img src="../../../assets/icon/closee.png" (click)="removeTask()">
+  </div>
+</div>
