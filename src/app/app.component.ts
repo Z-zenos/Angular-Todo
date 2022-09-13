@@ -38,7 +38,12 @@ export class AppComponent implements DoCheck {
     return this.tasks.filter(t => !t.isCompleted);
   }
 
-  markAllCompleted(isAllCompleted: boolean): void {
+  markAllCompleted(): void {
+    let isAllCompleted = false;
+    if(!this.taskActives.length)
+      isAllCompleted = false;
+    else if(this.taskActives.length <= this.tasks.length)
+      isAllCompleted = true;
     this.tasks.forEach(t => t.isCompleted = isAllCompleted);
   }
 
