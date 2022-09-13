@@ -43,7 +43,6 @@
 .todo__progress--all,
 .todo__progress--active,
 .todo__progress--completed {
-  border: 1px solid #ccc;
   padding: 2px 6px;
   border-radius: 4px;
   cursor: pointer;
@@ -51,11 +50,35 @@
   color: #000;
 }
 
-.todo__clear {
-  transition: all .4s ease;
+.all .todo__progress--all {
+  border: 1px solid #ccc;
 }
 
-.todo__clear:hover {
+.active .todo__progress--active {
+  border: 1px solid #ffab00;
+  color: #ffab00;
+}
+
+.completed .todo__progress--completed {
+  border: 1px solid #6ccfad;
+  color: #6ccfad;
+}
+
+.todo__clear p {
+  visibility: hidden;
+  margin-bottom: 0;
+  color: tomato;
+  background: rgba(255, 99, 71, 0.1);
+  padding: 4px 8px;
+  border-radius: 4px;
+  transition: all .2s ease;
+}
+
+.todo__clear .active {
+  visibility: visible;
+}
+
+.todo__clear .active:hover {
   text-decoration: underline;
   cursor: pointer;
 }

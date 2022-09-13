@@ -14,6 +14,7 @@ export class AppComponent implements DoCheck {
   title = 'Todo';
   tasks: Todo[] = [];
   taskId = 0;
+  isAllCompleted = false;
 
   constructor(
     private _cdref: ChangeDetectorRef,
@@ -23,6 +24,8 @@ export class AppComponent implements DoCheck {
   ngDoCheck(): void {
     this._cdref.detectChanges();
     this.shareTaskList();
+    if(this.taskActives.length)
+      this.isAllCompleted = this.taskActives.length ? false : true;
   }
 
   shareTaskList() {
@@ -39,12 +42,11 @@ export class AppComponent implements DoCheck {
   }
 
   markAllCompleted(): void {
-    let isAllCompleted = false;
     if(!this.taskActives.length)
-      isAllCompleted = false;
+      this.isAllCompleted = false;
     else if(this.taskActives.length <= this.tasks.length)
-      isAllCompleted = true;
-    this.tasks.forEach(t => t.isCompleted = isAllCompleted);
+      this.isAllCompleted = true;
+    this.tasks.forEach(t => t.isCompleted = this.isAllCompleted);
   }
 
   clearTasksCompleted(): void {

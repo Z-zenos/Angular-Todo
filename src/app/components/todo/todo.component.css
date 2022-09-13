@@ -101,4 +101,5 @@
 .completed .todo__title p {
   text-decoration: line-through;
   opacity: 40%;
+  transition: all .4s ease;
 }

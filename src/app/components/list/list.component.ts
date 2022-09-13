@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {TodoService} from "../../service/todo.service";
 import {Todo} from "../../Todo";
 import {ActivatedRoute} from "@angular/router";
@@ -21,7 +21,12 @@ export class ListComponent implements OnInit {
     this._todoService.taskList.subscribe(tl => this.tasks = tl);
     this._activatedRoute.paramMap.subscribe(params => {
       this.status = params.get('status') as string || 'all';
+      this.shareStatus();
     });
+  }
+
+  shareStatus() {
+    this._todoService.shareStatus(this.status);
   }
 
   markTask(task: Todo) {

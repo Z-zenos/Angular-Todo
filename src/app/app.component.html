@@ -3,6 +3,7 @@
   <todo-input
     (newTaskEvent)="getTask($event)"
     (completeAllEvent)="markAllCompleted()"
+    [isAllCompleted]="isAllCompleted"
   >
   </todo-input>
 
@@ -10,6 +11,7 @@
 
   <todo-stats
     [numberTasks]="taskActives.length"
+    [hasCompletedTask]="tasks.length > taskActives.length ? true : false"
     *ngIf="tasks.length"
     (clearEvent)="clearTasksCompleted()"
   >

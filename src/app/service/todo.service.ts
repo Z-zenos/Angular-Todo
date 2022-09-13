@@ -6,13 +6,19 @@ import {Todo} from "../Todo";
   providedIn: 'root'
 })
 export class TodoService {
-  private taskListSource = new BehaviorSubject<Todo[]>([]);
+  private _taskListSource = new BehaviorSubject<Todo[]>([]);
+  private _statusSource = new BehaviorSubject<string>('');
 
-  taskList = this.taskListSource.asObservable();
+  status = this._statusSource.asObservable();
+  taskList = this._taskListSource.asObservable();
 
   constructor() { }
 
   shareTaskList(lists: Todo[]) {
-    this.taskListSource.next(lists);
+    this._taskListSource.next(lists);
+  }
+
+  shareStatus(status: string) {
+    this._statusSource.next(status);
   }
 }

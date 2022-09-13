@@ -16,13 +16,16 @@
   align-items: center;
 }
 
-.todo__complete-all img {
-  width: 25px;
-  height: auto;
+.todo__complete-all svg {
   margin: 0 auto;
-  opacity: 40%;
   cursor: pointer;
+  color: gainsboro;
+  transition: all .3s ease;
+}
 
+.todo__complete-all .active {
+  opacity: 1;
+  color: mediumaquamarine;
 }
 
 .todo__input {

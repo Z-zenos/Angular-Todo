@@ -1,4 +1,4 @@
-import {Component, ElementRef, EventEmitter, OnInit, Output, ViewChild} from '@angular/core';
+import {Component, ElementRef, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 
 @Component({
   selector: 'todo-input',
@@ -9,7 +9,7 @@ export class InputComponent implements OnInit {
   @Output() newTaskEvent = new EventEmitter<string>();
   @Output() completeAllEvent = new EventEmitter();
   @ViewChild('input') input!: ElementRef;
-
+  @Input() isAllCompleted!: boolean;
 
   constructor() { }
 
