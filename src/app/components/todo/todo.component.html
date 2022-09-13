@@ -10,11 +10,16 @@
     </div>
   </div>
 
-  <div class="todo__title">
+  <div
+    class="todo__title"
+    (dblclick)="isEdit = !isEdit;"
+    (mouseleave)="editTask($event)"
+    [contentEditable]="isEdit"
+  >
     <p>{{ task.title }}</p>
   </div>
 
   <div class="todo__delete">
-    <img src="../../../assets/icon/closee.png" (click)="removeTask()">
+    <img src="../../../assets/icon/closee.png" alt="delete icon" (click)="removeTask()">
   </div>
 </div>
