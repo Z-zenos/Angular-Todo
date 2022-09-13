@@ -10,7 +10,6 @@ export class InputComponent implements OnInit {
   @Output() completeAllEvent = new EventEmitter();
   @ViewChild('input') input!: ElementRef;
 
-  isAllCompleted = false;
 
   constructor() { }
 
@@ -24,7 +23,6 @@ export class InputComponent implements OnInit {
   }
 
   markAllTasks() {
-    this.isAllCompleted = !this.isAllCompleted;
-    this.completeAllEvent.emit(this.isAllCompleted);
+    this.completeAllEvent.emit();
   }
 }
