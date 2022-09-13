@@ -1,6 +1,6 @@
 import {
   ChangeDetectorRef,
-  Component, DoCheck,
+  Component, DoCheck, OnInit,
 } from '@angular/core';
 import {Todo} from "./Todo";
 import {TodoService} from "./service/todo.service";
@@ -10,7 +10,7 @@ import {TodoService} from "./service/todo.service";
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements DoCheck {
+export class AppComponent implements OnInit, DoCheck {
   title = 'Todo';
   tasks: Todo[] = [];
   taskId = 0;
@@ -21,11 +21,24 @@ export class AppComponent implements DoCheck {
     private _todoService: TodoService
   ) { }
 
+  ngOnInit() {
+    this.loadTasks();
+  }
+
   ngDoCheck(): void {
     this._cdref.detectChanges();
     this.shareTaskList();
     if(this.taskActives.length)
       this.isAllCompleted = !this.taskActives.length;
+    this.storeTasks();
+  }
+
+  storeTasks() {
+    localStorage.setItem('tasks', JSON.stringify(this.tasks));
+  }
+
+  loadTasks() {
+    this.tasks = JSON.parse(localStorage.getItem('tasks') as string) || [];
   }
 
   shareTaskList() {
