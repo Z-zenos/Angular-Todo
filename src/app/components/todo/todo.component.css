@@ -1,5 +1,5 @@
 .todo {
-  height: 60px;
+  min-height: 60px;
   display: grid;
   grid-template-columns: 10% 70% 10%;
   column-gap: 5%;
@@ -79,13 +79,20 @@
 
 .todo__title {
   width: 100%;
+  height: 100%;
   text-align: left;
   opacity: 70%;
+  outline: none;
+  display: flex;
+  align-items: center;
 }
 
 .todo__title p {
+  width: 100%;
   margin-bottom: 0;
   font-size: 20px;
+  /* Break text to new line */
+  word-wrap: break-word;
 }
 
 .todo__delete img {
